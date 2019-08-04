@@ -21,7 +21,7 @@ I ran on ~2100 images with 7 threshold ranges to maximise chances of max text ge
 **Arguments:**  
 Specify path with -nd  
 Disable use of  dictionary : -nd  
-Sample run command : python Meme-Indecer.py -p '/home/memes/'
+Sample run command : python Meme-Indexer.py -p '/home/memes/'
 
 **Planned Updates**
 
