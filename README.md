@@ -1,4 +1,4 @@
-/# Meme-Indexer
+# Meme-Indexer
 Scans memes/images for text and names them according to the text found  
 
 When you have 5k+ stored memes but almost none of them have a descriptive name and you spend minutes fnding just the perfect meme for the situation.. This script tries to solve the problem. 
