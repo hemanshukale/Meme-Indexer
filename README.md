@@ -21,11 +21,11 @@ Press enter after every input.
 os, pytesseract, sys, time, PIL, argparse, inspect, datetime, shutil, traceback, pathvalidate, threading
 
 **Some stats :**  
-Single Thread: I ran on ~2100 images with 7 threshold ranges to maximise chances of max text getting captured and it took around 140 mins for the whole run with a very low processor usage and around 5% were not converted due to improper image plane.  
+Single Thread: I ran on ~2100 (~225MB) images with 7 threshold ranges to maximise chances of max text getting captured and it took around 140 mins for the whole run with a very low processor usage and around 5% were not converted due to improper image plane.  
 Multi Thread : Same Dataset was ran with 4 Threads and total time taken was ~50 mins. However processor usage was >90% for majority of time. 
 
 **Arguments:**  
-Specify path with -nd  
+Specify path with -p  
 Disable use of  dictionary : -nd  
 Indicate number of threads : -t
 Sample run command : python Meme-Indexer.py -p '/home/memes/'
