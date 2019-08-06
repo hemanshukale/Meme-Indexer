@@ -4,7 +4,6 @@ import argparse, inspect, datetime, shutil, traceback
 from pathvalidate import sanitize_filepath
 from threading import Thread
 
-# 46 mins # Take 1
 max_path_len = 254 # Some system may have a limit on path length, Enter the limit here and such cases will be truncated till this length
 p3 = sys.version_info > (2,8)
 kill = False
@@ -48,7 +47,8 @@ if cmd_args.threads == None :
     num_threads = 1 # Default Threads to 1 if multithreading option not provided
 else :
     try : num_threads = int(cmd_args.threads)
-    except : raise('Thread value NaN')
+    except : print('Thread count value NaN'); os._exit(1)
+    if num_threads < 1 : print('Improper Thread count value '); os._exit(1)
 
 err_str = ''
 op_folder='output_' + datetime.datetime.now().strftime('%Y%m%d-%H%M%S') # Output Folder name with timestamp
@@ -180,15 +180,17 @@ class Input(Thread):
                 st = ''
                 st = raw_input() if not p3 else input() # for raw string input
                 print('st:', st)
-                delay += (float(st.count('+')) - float(st.count('-')))/500 # delay changes proportionally to number of plus / minus found (2ms per count)
-                delay = round(constrain(offset,0, 1),3) # constraints offset to limits
                 if st.lower() == 'exit' : # exit
                     kill = True
                     print('Exiting', ins())
                     os._exit(0)
                 elif st.lower() == 'p':
                     pause = not pause
-                print('Curr offset ' , offset)
+                    print('Pause:', pause)
+                else:
+                    delay += (float(st.count('+')) - float(st.count('-')))/250 # delay changes proportionally to number of plus / minus found (2ms per count)
+                    delay = round(constrain(delay,0, 3),3) # constraints offset to limits
+                print('Curr delay ' , delay)
             except KeyboardInterrupt:
                 print('Exiting')
                 kill = True
